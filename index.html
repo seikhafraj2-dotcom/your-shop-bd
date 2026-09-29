@@ -5,54 +5,195 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Your Shop Bd — Online Shop</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f7f7f8;color:#222}header{background:#111827;color:white;padding:18px 5%;position:sticky;top:0;z-index:5}.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.logo{font-size:25px;font-weight:800}nav a{color:white;text-decoration:none;margin-left:16px;font-size:14px}.hero{background:linear-gradient(135deg,#111827,#4f46e5);color:#fff;padding:65px 5%;text-align:center}.hero h1{font-size:42px;margin:0 0 12px}.hero p{font-size:18px;margin:0 0 25px}.btn{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:#4f46e5;color:#fff;font-weight:700;text-decoration:none;cursor:pointer}.btn.green{background:#16a34a}.btn.red{background:#dc2626}.btn.gray{background:#6b7280}.btn:disabled{opacity:.5;cursor:not-allowed}.wrap{max-width:1100px;margin:auto;padding:35px 5%}.title{text-align:center;margin-bottom:25px}.cats{display:flex;gap:10px;overflow:auto;padding-bottom:10px}.cat{white-space:nowrap;border:1px solid #ddd;background:white;border-radius:20px;padding:9px 15px;cursor:pointer}.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 3px 15px #00000010}.pic{height:190px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:55px}.pic img{width:100%;height:100%;object-fit:cover;display:block}.info{padding:15px}.price{font-size:20px;font-weight:800;margin:8px 0}.meta{font-size:13px;color:#555;line-height:1.7}.stock{display:inline-block;padding:4px 8px;border-radius:20px;font-size:12px;font-weight:700;margin:5px 0}.in{background:#dcfce7;color:#166534}.out{background:#fee2e2;color:#991b1b}.order{background:white;border-radius:16px;padding:22px;box-shadow:0 3px 15px #00000010;max-width:700px;margin:auto}.order input,.order select,.order textarea,.adminbox input,.adminbox select,.adminbox textarea{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ddd;border-radius:9px;font-size:15px}.notice{background:#ecfdf5;border:1px solid #bbf7d0;padding:12px;border-radius:10px;margin-bottom:15px}footer{background:#111827;color:#ddd;text-align:center;padding:28px;margin-top:30px}.wa{position:fixed;right:18px;bottom:18px;background:#16a34a;color:#fff;padding:13px 18px;border-radius:50px;text-decoration:none;font-weight:800;z-index:10}#admin{display:none}.adminbox{background:white;padding:20px;border-radius:15px;overflow:auto;box-shadow:0 3px 15px #00000010}.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.admin-table{width:100%;border-collapse:collapse;min-width:700px}.admin-table th,.admin-table td{border-bottom:1px solid #eee;padding:10px;text-align:left;vertical-align:top}.small{font-size:12px;color:#666}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}.admin-form .full{grid-column:1/-1}.admin-form label{font-weight:700;font-size:14px;margin-top:5px}.admin-form input,.admin-form select,.admin-form textarea{margin-top:5px}.loginbox{max-width:420px;margin:auto;background:white;padding:20px;border-radius:15px;box-shadow:0 3px 15px #00000010}.hidden{display:none!important}.rowbtn{display:flex;gap:6px;flex-wrap:wrap}.admin-note{background:#fff7ed;border:1px solid #fed7aa;padding:12px;border-radius:10px;margin:12px 0}.preview{width:80px;height:60px;object-fit:cover;border-radius:8px;background:#eee}@media(max-width:600px){.hero h1{font-size:32px}nav a{margin-left:7px;font-size:12px}.admin-form{grid-template-columns:1fr}.admin-form .full{grid-column:auto}.tablewrap{overflow:auto}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f7f7f8;color:#222}
+header{background:#111827;color:#fff;padding:16px 5%;position:sticky;top:0;z-index:20}
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-size:25px;font-weight:800}
+nav a{color:#fff;text-decoration:none;margin-left:14px;font-size:15px}
+.hero{background:linear-gradient(135deg,#111827,#1717b8);color:#fff;padding:62px 5%;text-align:center}.hero h1{font-size:42px;margin:0 0 12px}.hero p{font-size:18px;margin:0 0 25px}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 17px;background:#4f46e5;color:#fff;font-weight:700;text-decoration:none;cursor:pointer}.btn.green{background:#16a34a}.btn.red{background:#dc2626}.btn.gray{background:#6b7280}
+.wrap{max-width:1100px;margin:auto;padding:35px 5%}.title{text-align:center;margin-bottom:25px}.cats{display:flex;gap:10px;overflow:auto;padding-bottom:10px}.cat{white-space:nowrap;border:1px solid #ddd;background:white;border-radius:20px;padding:9px 15px;cursor:pointer}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 3px 15px #00000010}.pic{height:190px;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:55px}.pic img{width:100%;height:100%;object-fit:cover;display:block}.info{padding:15px}.price{font-size:20px;font-weight:800;margin:8px 0}.stock{font-size:14px;margin:6px 0}.order{background:white;border-radius:16px;padding:22px;box-shadow:0 3px 15px #00000010;max-width:700px;margin:auto}.order input,.order select,.order textarea,.adminbox input,.adminbox select{width:100%;padding:12px;margin:7px 0 12px;border:1px solid #ddd;border-radius:9px;font-size:15px}.notice{background:#ecfdf5;border:1px solid #bbf7d0;padding:12px;border-radius:10px;margin-bottom:15px}
+footer{background:#111827;color:#ddd;text-align:center;padding:28px;margin-top:30px}.wa{position:fixed;right:18px;bottom:18px;background:#16a34a;color:#fff;padding:13px 18px;border-radius:50px;text-decoration:none;font-weight:800;z-index:10}
+#admin{display:none;background:#eef2ff}.adminbox{background:white;padding:20px;border-radius:15px;box-shadow:0 3px 15px #00000010}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{border:1px solid #ddd;border-radius:12px;padding:16px}.admin-product{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:12px 0;align-items:center}.admin-product:last-child{border-bottom:0}.small{font-size:13px;color:#555}.pill{display:inline-block;padding:4px 8px;border-radius:20px;background:#eee;font-size:12px;margin:2px}.login{max-width:420px;margin:auto;text-align:center}.hidden{display:none!important}
+@media(max-width:700px){.hero h1{font-size:32px}.admin-grid{grid-template-columns:1fr}nav a{margin-left:7px;font-size:12px}.admin-product{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<header><div class="nav"><div class="logo">🛍️ Your Shop Bd</div><nav><a href="#products">Products</a><a href="#order">Order</a><a href="#admin">Admin</a></nav></div></header>
-<section class="hero"><h1>Your Shop Bd</h1><p>চুড়ি • শাড়ি • শার্ট • প্যান্ট • ঘড়ি • গ্যাজেট</p><a class="btn" href="#products">পণ্য দেখুন</a></section>
-<section class="wrap" id="products"><h2 class="title">আমাদের পণ্য</h2><div class="cats" id="cats"></div><div class="products" id="productsGrid"></div></section>
-<section class="wrap" id="order"><h2 class="title">Cash on Delivery অর্ডার</h2><div class="order"><div class="notice">অর্ডার করার পর WhatsApp-এ আপনার অর্ডারের তথ্য পাঠানো হবে।</div><form id="orderForm"><label>পণ্য</label><select id="product" required></select><div id="variantFields"></div><label>আপনার নাম</label><input id="customerName" required placeholder="আপনার নাম"><label>মোবাইল নম্বর</label><input id="customerPhone" required inputmode="tel" placeholder="01XXXXXXXXX"><label>ঠিকানা</label><textarea id="customerAddress" required rows="3" placeholder="বাড়ি/রোড, এলাকা, থানা, জেলা"></textarea><label>পরিমাণ</label><input id="qty" type="number" min="1" value="1" required><button class="btn green" id="orderBtn" type="submit">WhatsApp-এ অর্ডার পাঠান</button></form><p id="msg"></p></div></section>
-<section class="wrap" id="admin"><h2 class="title">Admin Panel</h2><div id="loginBox" class="loginbox"><h3>🔐 Admin Login</h3><p class="small">ডিফল্ট পাসওয়ার্ড: <b>1234</b> — প্রথম লগইনের পর পাসওয়ার্ড পরিবর্তন করতে পারবে।</p><input id="adminPass" type="password" placeholder="Admin password"><button class="btn" onclick="adminLogin()">Login</button><p id="loginMsg"></p></div><div id="adminPanel" class="adminbox hidden"><div class="admin-actions"><button class="btn" onclick="showAddForm()">➕ নতুন পণ্য</button><button class="btn gray" onclick="showPasswordForm()">🔑 পাসওয়ার্ড বদলাও</button><button class="btn red" onclick="adminLogout()">Logout</button></div><div class="admin-note">এই Admin Panel-এ পণ্য <b>যোগ, Edit, Delete</b>, দাম, ছবি, সাইজ, কালার এবং <b>Stock আছে/নেই</b> নিয়ন্ত্রণ করা যাবে।</div><div id="adminFormBox" class="hidden"></div><h3>📦 পণ্যের তালিকা</h3><div class="tablewrap"><table class="admin-table"><thead><tr><th>ছবি</th><th>পণ্য</th><th>দাম</th><th>সাইজ</th><th>কালার</th><th>Stock</th><th>Action</th></tr></thead><tbody id="adminRows"></tbody></table></div></div></section>
-<a class="wa" href="https://wa.me/8801606456442" target="_blank">💬 WhatsApp Customer Care</a><footer>© 2026 Your Shop Bd • Customer Care: 01606456442</footer>
+<header><div class="nav"><div class="logo">🛍️ Your Shop Bd</div><nav><a href="#products">Products</a><a href="#order">Order</a><a href="#admin" onclick="openAdmin()">Admin</a></nav></div></header>
+
+<section class="hero">
+<h1>Your Shop Bd</h1><p>চুড়ি • শাড়ি • শার্ট • প্যান্ট • ঘড়ি • গ্যাজেট</p>
+<a class="btn" href="#products">পণ্য দেখুন</a>
+</section>
+
+<section class="wrap" id="products">
+<h2 class="title">আমাদের পণ্য</h2>
+<div class="cats" id="cats"></div>
+<div class="products" id="productsGrid"></div>
+</section>
+
+<section class="wrap" id="order">
+<h2 class="title">Cash on Delivery অর্ডার</h2>
+<div class="order">
+<div class="notice">অর্ডার করার পর আমাদের টিম আপনার সাথে ফোনে যোগাযোগ করবে।</div>
+<form id="orderForm">
+<label>পণ্য</label><select id="product" required></select>
+<label>Size</label><select id="size"><option value="">প্রযোজ্য নয়</option></select>
+<label>Color</label><select id="color"><option value="">প্রযোজ্য নয়</option></select>
+<label>আপনার নাম</label><input id="name" required placeholder="আপনার নাম">
+<label>মোবাইল নম্বর</label><input id="phone" required inputmode="tel" placeholder="01XXXXXXXXX">
+<label>ঠিকানা</label><textarea id="address" required rows="3" placeholder="বাড়ি/রোড, এলাকা, থানা, জেলা"></textarea>
+<label>পরিমাণ</label><input id="qty" type="number" min="1" value="1" required>
+<button class="btn green" type="submit">অর্ডার কনফার্ম করুন</button>
+</form><p id="msg"></p>
+</div></section>
+
+<section class="wrap" id="admin">
+<h2 class="title">Admin Panel</h2>
+<div class="adminbox">
+<div id="loginBox" class="login">
+<h3>🔐 Admin Login</h3>
+<p class="small">ডেমো Admin Password: <b>1234</b></p>
+<input id="adminPass" type="password" placeholder="Password">
+<button class="btn" onclick="loginAdmin()">Login</button>
+<p id="loginMsg"></p>
+</div>
+
+<div id="adminPanel" class="hidden">
+<p><b>Admin Controls:</b> পণ্য যোগ, Edit, Delete, দাম, Stock, Size এবং Color নিয়ন্ত্রণ করা যাবে।</p>
+<div class="admin-grid">
+<div class="panel">
+<h3>➕ নতুন পণ্য</h3>
+<input id="pName" placeholder="পণ্যের নাম">
+<input id="pCat" placeholder="Category যেমন চুড়ি">
+<input id="pPrice" type="number" min="0" placeholder="দাম">
+<input id="pStock" type="number" min="0" placeholder="Stock">
+<input id="pSizes" placeholder="Size: S,M,L,XL">
+<input id="pColors" placeholder="Color: লাল,কালো,সাদা">
+<input id="pImage" placeholder="ছবির নাম/URL (যেমন bangle-red-gold.jpg)">
+<button class="btn green" onclick="addProduct()">পণ্য Add</button>
+</div>
+<div class="panel">
+<h3>📦 পণ্য তালিকা</h3>
+<div id="adminProducts"></div>
+</div>
+</div>
+<hr>
+<h3>🧾 এই ডিভাইসের অর্ডার</h3>
+<button class="btn" onclick="showOrders()">অর্ডার দেখুন</button>
+<button class="btn red" onclick="clearOrders()">সব অর্ডার মুছুন</button>
+<div id="orders"></div>
+</div>
+</div>
+</section>
+
+<a class="wa" href="https://wa.me/8801606456442" target="_blank">💬 WhatsApp Customer Care</a>
+<footer>© 2026 Your Shop Bd • Customer Care: 01606456442</footer>
+
 <script>
-const DEFAULT_PRODUCTS=[
-{name:"লাল চুড়ি সেট (গোল্ডেন ডিজাইন)",cat:"চুড়ি",price:300,image:"bangle-red-gold.jpg",icon:"💍",sizes:[],colors:["লাল"],stock:10},
-{name:"ডিজাইনার শাড়ি",cat:"শাড়ি",price:1200,icon:"👗",sizes:["ফ্রি সাইজ"],colors:["লাল","নীল","কালো"],stock:5},
-{name:"Premium Shirt",cat:"শার্ট",price:750,icon:"👕",sizes:["M","L","XL"],colors:["সাদা","কালো"],stock:8},
-{name:"Men's Pant",cat:"প্যান্ট",price:850,icon:"👖",sizes:["30","32","34","36"],colors:["কালো","নেভি"],stock:6},
-{name:"Classic Watch",cat:"ঘড়ি",price:650,icon:"⌚",sizes:[],colors:["কালো","সিলভার"],stock:4},
-{name:"Smart Gadget",cat:"গ্যাজেট",price:999,icon:"📱",sizes:[],colors:["কালো"],stock:0}
+const defaultProducts=[
+{name:"লাল চুড়ি সেট (গোল্ডেন ডিজাইন)",cat:"চুড়ি",price:300,stock:10,sizes:[],colors:["লাল"],image:"bangle-red-gold.jpg",icon:"💍"},
+{name:"ডিজাইনার শাড়ি",cat:"শাড়ি",price:1200,stock:8,sizes:[],colors:["লাল","নীল","কালো"],image:"",icon:"👗"},
+{name:"Premium Shirt",cat:"শার্ট",price:750,stock:12,sizes:["M","L","XL"],colors:["কালো","সাদা","নীল"],image:"",icon:"👕"},
+{name:"Men's Pant",cat:"প্যান্ট",price:850,stock:9,sizes:["30","32","34","36"],colors:["কালো","নেভি"],image:"",icon:"👖"},
+{name:"Classic Watch",cat:"ঘড়ি",price:650,stock:6,sizes:[],colors:["কালো","সিলভার"],image:"",icon:"⌚"},
+{name:"Smart Gadget",cat:"গ্যাজেট",price:999,stock:5,sizes:[],colors:["কালো"],image:"",icon:"📱"}
 ];
-const STORE_KEY="your_shop_bd_products_v1";const PASS_KEY="your_shop_bd_admin_pass_v1";
-let products=loadProducts();let editingIndex=-1;
-function loadProducts(){try{const x=JSON.parse(localStorage.getItem(STORE_KEY));return Array.isArray(x)&&x.length?x:DEFAULT_PRODUCTS.map(p=>({...p}));}catch(e){return DEFAULT_PRODUCTS.map(p=>({...p}));}}
-function saveProducts(){localStorage.setItem(STORE_KEY,JSON.stringify(products));}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
-function arrText(a){return (a||[]).join(", ");}
-function refresh(){const cats=["সব",...new Set(products.map(x=>x.cat).filter(Boolean))];document.getElementById("cats").innerHTML=cats.map(c=>`<button class="cat" onclick="render('${esc(c).replace(/'/g,"\\'")}')">${esc(c)}</button>`).join("");render();populateOrder();renderAdminRows();}
-function render(filter="সব"){const list=filter==="সব"?products:products.filter(x=>x.cat===filter);document.getElementById("productsGrid").innerHTML=list.map((p,i)=>{const realIndex=products.indexOf(p);const inStock=Number(p.stock)>0;return `<div class="card"><div class="pic">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}">`:esc(p.icon||"🛍️")}</div><div class="info"><b>${esc(p.name)}</b><div class="price">৳${Number(p.price||0)}</div><span class="stock ${inStock?'in':'out'}">${inStock?`স্টকে আছে (${Number(p.stock)})`:"স্টক নেই"}</span><div class="meta">${p.sizes?.length?`সাইজ: ${esc(arrText(p.sizes))}<br>`:""}${p.colors?.length?`কালার: ${esc(arrText(p.colors))}`:""}</div><br><button class="btn" ${inStock?`onclick="choose('${esc(p.name).replace(/'/g,"\\'")}')"`:"disabled"}>${inStock?"অর্ডার করুন":"স্টক নেই"}</button></div></div>`}).join("");}
-function populateOrder(){document.getElementById("product").innerHTML=products.map((p,i)=>`<option value="${i}" ${Number(p.stock)<=0?"disabled":""}>${esc(p.name)} — ৳${Number(p.price||0)} ${Number(p.stock)<=0?"(স্টক নেই)":""}</option>`).join("");updateVariants();}
-function updateVariants(){const i=Number(document.getElementById("product").value||0),p=products[i];const box=document.getElementById("variantFields");if(!p){box.innerHTML="";return}let html="";if(p.sizes?.length)html+=`<label>সাইজ</label><select id="orderSize" required>${p.sizes.map(x=>`<option>${esc(x)}</option>`).join("")}</select>`;if(p.colors?.length)html+=`<label>কালার</label><select id="orderColor" required>${p.colors.map(x=>`<option>${esc(x)}</option>`).join("")}</select>`;box.innerHTML=html;document.getElementById("orderBtn").disabled=Number(p.stock)<=0;}
-document.getElementById("product").addEventListener("change",updateVariants);
-function choose(name){const i=products.findIndex(p=>p.name===name);if(i<0)return;document.getElementById("product").value=i;updateVariants();location.hash="order";}
-document.getElementById("orderForm").onsubmit=e=>{e.preventDefault();const i=Number(document.getElementById("product").value),p=products[i];if(!p||Number(p.stock)<=0)return;const size=document.getElementById("orderSize")?.value||"-",color=document.getElementById("orderColor")?.value||"-",quantity=Math.max(1,Number(document.getElementById("qty").value||1));const message="🛍️ *Your Shop Bd — নতুন অর্ডার*%0A%0A"+"📦 পণ্য: "+encodeURIComponent(p.name)+"%0A"+"💰 দাম: ৳"+encodeURIComponent(p.price)+"%0A"+"📏 সাইজ: "+encodeURIComponent(size)+"%0A"+"🎨 কালার: "+encodeURIComponent(color)+"%0A"+"🔢 পরিমাণ: "+encodeURIComponent(quantity)+"%0A"+"👤 নাম: "+encodeURIComponent(document.getElementById("customerName").value.trim())+"%0A"+"📞 ফোন: "+encodeURIComponent(document.getElementById("customerPhone").value.trim())+"%0A"+"📍 ঠিকানা: "+encodeURIComponent(document.getElementById("customerAddress").value.trim());document.getElementById("msg").innerHTML="✅ অর্ডারের তথ্য WhatsApp-এ পাঠানো হচ্ছে।";window.open("https://wa.me/8801606456442?text="+message,"_blank");};
-function adminLogin(){const entered=document.getElementById("adminPass").value;const saved=localStorage.getItem(PASS_KEY)||"1234";if(entered===saved){sessionStorage.setItem("ysbd_admin","1");showAdmin();}else document.getElementById("loginMsg").innerHTML="❌ পাসওয়ার্ড ভুল।";}
-function showAdmin(){document.getElementById("loginBox").classList.add("hidden");document.getElementById("adminPanel").classList.remove("hidden");renderAdminRows();}
-function adminLogout(){sessionStorage.removeItem("ysbd_admin");document.getElementById("loginBox").classList.remove("hidden");document.getElementById("adminPanel").classList.add("hidden");}
-function showAddForm(){editingIndex=-1;document.getElementById("adminFormBox").classList.remove("hidden");document.getElementById("adminFormBox").innerHTML=formHtml({name:"",cat:"",price:"",image:"",icon:"🛍️",sizes:[],colors:[],stock:0});}
-function showEditForm(i){editingIndex=i;document.getElementById("adminFormBox").classList.remove("hidden");document.getElementById("adminFormBox").innerHTML=formHtml(products[i]);window.scrollTo({top:document.getElementById("adminFormBox").getBoundingClientRect().top+window.scrollY-80,behavior:"smooth"});}
-function formHtml(p){return `<div class="admin-note"><b>${editingIndex<0?"নতুন পণ্য যোগ":"পণ্য Edit"}</b></div><div class="admin-form"><div><label>পণ্যের নাম</label><input id="fName" value="${esc(p.name)}" placeholder="যেমন: Premium T-Shirt"></div><div><label>Category</label><input id="fCat" value="${esc(p.cat)}" placeholder="শার্ট"></div><div><label>দাম (৳)</label><input id="fPrice" type="number" min="0" value="${Number(p.price||0)}"></div><div><label>Stock কতটি?</label><input id="fStock" type="number" min="0" value="${Number(p.stock||0)}"></div><div class="full"><label>ছবির URL</label><input id="fImage" value="${esc(p.image||"")}" placeholder="https://...jpg"><div class="small">ছবি না দিলে Emoji ব্যবহার হবে।</div></div><div><label>Size (কমা দিয়ে)</label><input id="fSizes" value="${esc(arrText(p.sizes))}" placeholder="M, L, XL"></div><div><label>Color (কমা দিয়ে)</label><input id="fColors" value="${esc(arrText(p.colors))}" placeholder="কালো, সাদা, নীল"></div><div><label>Emoji</label><input id="fIcon" value="${esc(p.icon||"🛍️")}" maxlength="4"></div><div class="full rowbtn"><button class="btn green" onclick="saveProductForm()">💾 Save</button><button class="btn gray" onclick="cancelForm()">Cancel</button></div></div>`;}
-function splitVals(v){return String(v||"").split(",").map(x=>x.trim()).filter(Boolean);}
-function saveProductForm(){const p={name:document.getElementById("fName").value.trim(),cat:document.getElementById("fCat").value.trim()||"অন্যান্য",price:Number(document.getElementById("fPrice").value||0),stock:Number(document.getElementById("fStock").value||0),image:document.getElementById("fImage").value.trim(),sizes:splitVals(document.getElementById("fSizes").value),colors:splitVals(document.getElementById("fColors").value),icon:document.getElementById("fIcon").value.trim()||"🛍️"};if(!p.name){alert("পণ্যের নাম দিন");return}if(p.stock<0)p.stock=0;if(editingIndex<0)products.push(p);else products[editingIndex]=p;saveProducts();cancelForm();refresh();}
-function cancelForm(){editingIndex=-1;document.getElementById("adminFormBox").classList.add("hidden");document.getElementById("adminFormBox").innerHTML="";}
-function deleteProduct(i){if(confirm("এই পণ্যটি Delete করতে চান?")){products.splice(i,1);saveProducts();refresh();}}
-function toggleStock(i){products[i].stock=Number(products[i].stock)>0?0:1;saveProducts();refresh();renderAdminRows();}
-function renderAdminRows(){const el=document.getElementById("adminRows");if(!el)return;el.innerHTML=products.map((p,i)=>`<tr><td>${p.image?`<img class="preview" src="${esc(p.image)}">`:esc(p.icon||"🛍️")}</td><td><b>${esc(p.name)}</b><br><span class="small">${esc(p.cat)}</span></td><td>৳${Number(p.price||0)}</td><td>${esc(arrText(p.sizes)||"-")}</td><td>${esc(arrText(p.colors)||"-")}</td><td><span class="stock ${Number(p.stock)>0?'in':'out'}">${Number(p.stock)>0?`আছে (${Number(p.stock)})`:"নেই"}</span></td><td><div class="rowbtn"><button class="btn" onclick="showEditForm(${i})">Edit</button><button class="btn gray" onclick="toggleStock(${i})">${Number(p.stock)>0?"Stock Off":"Stock On"}</button><button class="btn red" onclick="deleteProduct(${i})">Delete</button></div></td></tr>`).join("");}
-function showPasswordForm(){document.getElementById("adminFormBox").classList.remove("hidden");document.getElementById("adminFormBox").innerHTML='<div class="admin-note"><b>Admin Password পরিবর্তন</b></div><input id="newPass" type="password" placeholder="নতুন পাসওয়ার্ড"><button class="btn green" onclick="changePassword()">Save Password</button>'}
-function changePassword(){const p=document.getElementById("newPass").value;if(p.length<4){alert("কমপক্ষে 4 অক্ষরের পাসওয়ার্ড দিন");return}localStorage.setItem(PASS_KEY,p);alert("পাসওয়ার্ড পরিবর্তন হয়েছে");cancelForm();}
-if(sessionStorage.getItem("ysbd_admin")==="1")showAdmin();
-refresh();
+
+let products=JSON.parse(localStorage.getItem("ysbd_products")||"null");
+if(!products){products=defaultProducts;saveProducts()}
+
+function saveProducts(){localStorage.setItem("ysbd_products",JSON.stringify(products))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+
+function renderCats(){
+ const cats=["সব",...new Set(products.map(x=>x.cat).filter(Boolean))];
+ document.getElementById("cats").innerHTML=cats.map(c=>`<button class="cat" onclick="render('${esc(c)}')">${esc(c)}</button>`).join("");
+}
+function render(filter="সব"){
+ renderCats();
+ const list=filter==="সব"?products:products.filter(x=>x.cat===filter);
+ document.getElementById("productsGrid").innerHTML=list.map((p)=>`
+ <div class="card"><div class="pic">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}">`:esc(p.icon||"🛍️")}</div>
+ <div class="info"><b>${esc(p.name)}</b><div class="price">৳${p.price}</div>
+ <div class="stock">${p.stock>0?`🟢 Stock: ${p.stock}`:"🔴 Stock নেই"}</div>
+ ${p.sizes?.length?`<div class="small">Size: ${p.sizes.map(esc).join(", ")}</div>`:""}
+ ${p.colors?.length?`<div class="small">Color: ${p.colors.map(esc).join(", ")}</div>`:""}
+ <button class="btn" ${p.stock<1?"disabled":""} onclick="choose('${esc(p.name)}')">${p.stock>0?"অর্ডার করুন":"Stock নেই"}</button></div></div>`).join("");
+ updateProductSelect();
+}
+function updateProductSelect(){
+ const available=products.filter(p=>p.stock>0);
+ product.innerHTML=available.map((p,i)=>`<option value="${i}">${esc(p.name)} — ৳${p.price}</option>`).join("");
+ updateVariants();
+}
+product.onchange=updateVariants;
+function updateVariants(){
+ const p=products.filter(x=>x.stock>0)[Number(product.value)||0];
+ size.innerHTML=`<option value="">প্রযোজ্য নয়</option>`+(p?.sizes||[]).map(x=>`<option>${esc(x)}</option>`).join("");
+ color.innerHTML=`<option value="">প্রযোজ্য নয়</option>`+(p?.colors||[]).map(x=>`<option>${esc(x)}</option>`).join("");
+}
+function choose(name){
+ const idx=products.findIndex(p=>p.name===name && p.stock>0);
+ if(idx<0)return;
+ product.value=products.filter(p=>p.stock>0).findIndex(p=>p.name===name);
+ updateVariants(); location.hash="order";
+}
+orderForm.onsubmit=e=>{
+ e.preventDefault();
+ const available=products.filter(p=>p.stock>0); const p=available[Number(product.value)];
+ if(!p)return;
+ const q=Number(qty.value||1);
+ if(q>p.stock){msg.innerHTML="❌ এতগুলো Stock নেই।";return}
+ p.stock-=q; saveProducts(); render();
+ const orders=JSON.parse(localStorage.getItem("ysbd_orders")||"[]");
+ const order={id:"YS"+Date.now().toString().slice(-7),product:p.name,size:size.value,color:color.value,name:name.value,phone:phone.value,address:address.value,qty:q,date:new Date().toLocaleString("bn-BD")};
+ orders.unshift(order);localStorage.setItem("ysbd_orders",JSON.stringify(orders));
+ msg.innerHTML="✅ অর্ডার গ্রহণ করা হয়েছে! Order ID: <b>"+order.id+"</b>";
+ e.target.reset();qty.value=1;updateVariants();
+};
+
+function openAdmin(){setTimeout(()=>document.getElementById("admin").scrollIntoView(),50)}
+function loginAdmin(){
+ if(adminPass.value==="1234"){
+  loginBox.classList.add("hidden");adminPanel.classList.remove("hidden");renderAdmin();
+ }else loginMsg.innerHTML="❌ Password ভুল";
+}
+function addProduct(){
+ const name=pName.value.trim(); if(!name)return alert("পণ্যের নাম দিন");
+ const obj={name,cat:pCat.value.trim()||"অন্যান্য",price:Number(pPrice.value||0),stock:Number(pStock.value||0),
+ sizes:pSizes.value.split(",").map(x=>x.trim()).filter(Boolean),colors:pColors.value.split(",").map(x=>x.trim()).filter(Boolean),
+ image:pImage.value.trim(),icon:"🛍️"};
+ products.push(obj);saveProducts();render();renderAdmin();
+ [pName,pCat,pPrice,pStock,pSizes,pColors,pImage].forEach(x=>x.value="");
+}
+function renderAdmin(){
+ adminProducts.innerHTML=products.map((p,i)=>`<div class="admin-product">
+ <div><b>${esc(p.name)}</b><br><span class="small">৳${p.price} • Stock ${p.stock} • ${esc(p.cat)}</span><br>
+ ${(p.sizes||[]).map(x=>`<span class="pill">Size ${esc(x)}</span>`).join("")}
+ ${(p.colors||[]).map(x=>`<span class="pill">Color ${esc(x)}</span>`).join("")}</div>
+ <div><button class="btn gray" onclick="editProduct(${i})">Edit</button> <button class="btn red" onclick="deleteProduct(${i})">Delete</button></div>
+ </div>`).join("");
+}
+function editProduct(i){
+ const p=products[i];
+ const name=prompt("পণ্যের নাম",p.name); if(name===null)return;
+ const price=prompt("দাম",p.price); if(price===null)return;
+ const stock=prompt("Stock",p.stock); if(stock===null)return;
+ const sizes=prompt("Size (কমা দিয়ে)",(p.sizes||[]).join(",")); if(sizes===null)return;
+ const colors=prompt("Color (কমা দিয়ে)",(p.colors||[]).join(",")); if(colors===null)return;
+ p.name=name.trim();p.price=Number(price)||0;p.stock=Number(stock)||0;
+ p.sizes=sizes.split(",").map(x=>x.trim()).filter(Boolean);p.colors=colors.split(",").map(x=>x.trim()).filter(Boolean);
+ saveProducts();render();renderAdmin();
+}
+function deleteProduct(i){if(confirm("এই পণ্যটি মুছবেন?")){products.splice(i,1);saveProducts();render();renderAdmin()}}
+function showOrders(){
+ const o=JSON.parse(localStorage.getItem("ysbd_orders")||"[]");
+ orders.innerHTML=o.length?o.map(x=>`<div class="panel" style="margin:10px 0"><b>${esc(x.id)}</b> — ${esc(x.product)} × ${x.qty}<br>Size: ${esc(x.size||"-")} | Color: ${esc(x.color||"-")}<br>👤 ${esc(x.name)} | 📞 ${esc(x.phone)}<br>📍 ${esc(x.address)}<br><small>${esc(x.date)}</small></div>`).join(""):"কোনো অর্ডার নেই।";
+}
+function clearOrders(){if(confirm("সব অর্ডার মুছবেন?")){localStorage.removeItem("ysbd_orders");showOrders()}}
+
+render();
 </script>
 </body>
 </html>
