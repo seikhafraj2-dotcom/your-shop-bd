@@ -59,14 +59,14 @@ footer{background:#111827;color:#ddd;text-align:center;padding:28px;margin-top:3
 <section class="wrap" id="order">
 <h2 class="title">Cash on Delivery অর্ডার</h2>
 <div class="order">
-<div class="notice">অর্ডার করার পর আমাদের টিম আপনার সাথে ফোনে যোগাযোগ করবে।</div>
+<div class="notice">অর্ডার করার পর WhatsApp-এ আপনার অর্ডারের তথ্য পাঠানো হবে।</div>
 <form id="orderForm">
 <label>পণ্য</label><select id="product" required></select>
 <label>আপনার নাম</label><input id="name" required placeholder="আপনার নাম">
 <label>মোবাইল নম্বর</label><input id="phone" required inputmode="tel" placeholder="01XXXXXXXXX">
 <label>ঠিকানা</label><textarea id="address" required rows="3" placeholder="বাড়ি/রোড, এলাকা, থানা, জেলা"></textarea>
 <label>পরিমাণ</label><input id="qty" type="number" min="1" value="1" required>
-<button class="btn green" type="submit">অর্ডার কনফার্ম করুন</button>
+<button class="btn green" type="submit">WhatsApp-এ অর্ডার পাঠান</button>
 </form>
 <p id="msg"></p>
 </div>
@@ -75,10 +75,7 @@ footer{background:#111827;color:#ddd;text-align:center;padding:28px;margin-top:3
 <section class="wrap" id="admin">
 <h2 class="title">Admin — আপনার অর্ডার</h2>
 <div class="adminbox">
-<p><b>নোট:</b> এই ফ্রি starter version-এ অর্ডারগুলো এই browser/device-এ সংরক্ষিত হবে।</p>
-<button class="btn" onclick="showOrders()">অর্ডার দেখুন</button>
-<button class="btn" onclick="clearOrders()">সব অর্ডার মুছুন</button>
-<div id="orders"></div>
+<p><b>নোট:</b> অর্ডারের তথ্য WhatsApp-এ পাঠানো হবে।</p>
 </div>
 </section>
 
@@ -96,8 +93,7 @@ const products=[
 ];
 
 const cats=["সব",...products.map(x=>x.cat)];
-const catsEl=document.getElementById("cats");
-catsEl.innerHTML=cats.map(c=>`<button class="cat" onclick="render('${c}')">${c}</button>`).join("");
+document.getElementById("cats").innerHTML=cats.map(c=>`<button class="cat" onclick="render('${c}')">${c}</button>`).join("");
 
 function render(filter="সব"){
 const list=filter==="সব"?products:products.filter(x=>x.cat===filter);
@@ -121,26 +117,26 @@ location.hash="order";
 
 document.getElementById("orderForm").onsubmit=e=>{
 e.preventDefault();
-const orders=JSON.parse(localStorage.getItem("ysbd_orders")||"[]");
-const order={id:"YS"+Date.now().toString().slice(-7),product:product.value,name:name.value,phone:phone.value,address:address.value,qty:qty.value,date:new Date().toLocaleString("bn-BD")};
-orders.unshift(order);
-localStorage.setItem("ysbd_orders",JSON.stringify(orders));
-msg.innerHTML="✅ অর্ডার গ্রহণ করা হয়েছে! Order ID: <b>"+order.id+"</b>";
-e.target.reset();
-qty.value=1;
+
+const selected=product.value;
+const customerName=name.value.trim();
+const customerPhone=phone.value.trim();
+const customerAddress=address.value.trim();
+const quantity=qty.value;
+
+const message =
+"🛍️ *Your Shop Bd — নতুন অর্ডার*%0A%0A"+
+"📦 পণ্য: "+encodeURIComponent(selected)+"%0A"+
+"🔢 পরিমাণ: "+encodeURIComponent(quantity)+"%0A"+
+"👤 নাম: "+encodeURIComponent(customerName)+"%0A"+
+"📞 ফোন: "+encodeURIComponent(customerPhone)+"%0A"+
+"📍 ঠিকানা: "+encodeURIComponent(customerAddress);
+
+const whatsappUrl="https://wa.me/8801606456442?text="+message;
+
+document.getElementById("msg").innerHTML="✅ অর্ডারের তথ্য WhatsApp-এ পাঠানোর জন্য প্রস্তুত।";
+window.open(whatsappUrl,"_blank");
 };
-
-function showOrders(){
-const o=JSON.parse(localStorage.getItem("ysbd_orders")||"[]");
-document.getElementById("orders").innerHTML=o.length?o.map(x=>`<div class="orderrow"><b>${x.id}</b> — ${x.product} × ${x.qty}<br>👤 ${x.name} | 📞 ${x.phone}<br>📍 ${x.address}<br><small>${x.date}</small></div>`).join(""):"কোনো অর্ডার নেই।";
-}
-
-function clearOrders(){
-if(confirm("সব অর্ডার মুছবেন?")){
-localStorage.removeItem("ysbd_orders");
-showOrders();
-}
-}
 
 render();
 </script>
